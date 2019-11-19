@@ -27,12 +27,17 @@ Public Class Form1
             Dim repairUpCount As Long = 0
 
             For Each id As JObject In list
+
                 Dim obj As String = (id.GetValue("id"))
+                TextBox1.Text = TextBox1.Text & " Setelite ID " & obj & vbNewLine
                 request = DirectCast(WebRequest.Create("http://" & TextBox3.Text & ":" & TextBox2.Text & "/api/satellite/" & obj), HttpWebRequest)
                 response = DirectCast(request.GetResponse(), HttpWebResponse)
                 reader = New StreamReader(response.GetResponseStream())
                 rawresp = reader.ReadToEnd()
+                TextBox1.Text = TextBox1.Text & "Audit" & vbNewLine
                 TextBox1.Text = TextBox1.Text & ((JObject.Parse(rawresp)("data")("audit"))).ToString & vbNewLine
+                TextBox1.Text = TextBox1.Text & "Uptime" & vbNewLine
+                TextBox1.Text = TextBox1.Text & ((JObject.Parse(rawresp)("data")("uptime"))).ToString & vbNewLine
 
 
                 For Each values As Object In JsonConvert.DeserializeObject(Of List(Of Object))(JObject.Parse(rawresp)("data")("bandwidthDaily").ToString)
@@ -48,11 +53,11 @@ Public Class Form1
                 Next
 
             Next
-            TextBox1.Text = TextBox1.Text & "Upload: " & Math.Round(egressCount / 1073741824, 2) & vbNewLine
-            TextBox1.Text = TextBox1.Text & "Download: " & Math.Round(ingressCount / 1073741824, 2) & vbNewLine
-            TextBox1.Text = TextBox1.Text & "Repair Download: " & Math.Round(repairDownCount / 1073741824, 2) & vbNewLine
-            TextBox1.Text = TextBox1.Text & "Repair Upload: " & Math.Round(repairUpCount / 1073741824, 3) & vbNewLine
-            TextBox1.Text = TextBox1.Text & "Total: " & Math.Round((repairDownCount + repairUpCount + ingressCount + egressCount) / 1073741824, 2) & vbNewLine
+            TextBox1.Text = TextBox1.Text & "Upload: " & Math.Round(egressCount / 1000000000, 2) & vbNewLine
+            TextBox1.Text = TextBox1.Text & "Download: " & Math.Round(ingressCount / 1000000000, 2) & vbNewLine
+            TextBox1.Text = TextBox1.Text & "Repair Download: " & Math.Round(repairDownCount / 1000000000, 2) & vbNewLine
+            TextBox1.Text = TextBox1.Text & "Repair Upload: " & Math.Round(repairUpCount / 1000000000, 3) & vbNewLine
+            TextBox1.Text = TextBox1.Text & "Total: " & Math.Round((repairDownCount + repairUpCount + ingressCount + egressCount) / 1000000000, 2) & vbNewLine
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
