@@ -9,9 +9,20 @@ Public Class Form1
     Private MonitoringStatus As Boolean = False
     Private LocalID As String = ""
     Private MeCloasing As Boolean = False
+    Private Delegate Sub SendedUpdate(last As String)
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         GetData()
     End Sub
+    Private Sub UpdateLastSended(lastsend As String)
+        If Me.InvokeRequired Then
+            Me.Invoke(New SendedUpdate(AddressOf UpdateLastSended), lastsend)
+        Else
+
+            Label4.Text = lastsend
+        End If
+
+    End Sub
+
     Private Sub Monitoring()
         Dim sendObject As New Nodes
         sendObject.UserID = My.Settings.UserID
@@ -115,10 +126,11 @@ Public Class Form1
             Next
             Dim resultJson = JsonHelper.FromClass(sendObject)
             Dim result = Sender.postData(resultJson)
+            UpdateLastSended("Last Sended " & DateTime.Now)
         Catch ex As Exception
         End Try
         If MonitoringStatus Then
-            For i As Integer = 0 To 600
+            For i As Integer = 0 To 599
                 Threading.Thread.Sleep(1000)
                 ''Need to monitor application exit
                 If MeCloasing Then

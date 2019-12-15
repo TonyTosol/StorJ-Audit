@@ -45,12 +45,13 @@ Partial Class Form1
         Me.UserIDBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.SaveUserID = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.NodeView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(1327, 615)
+        Me.Button1.Location = New System.Drawing.Point(1327, 648)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(91, 23)
         Me.Button1.TabIndex = 1
@@ -59,7 +60,7 @@ Partial Class Form1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(1327, 516)
+        Me.TextBox2.Location = New System.Drawing.Point(1327, 549)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(133, 22)
         Me.TextBox2.TabIndex = 2
@@ -67,7 +68,7 @@ Partial Class Form1
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(1327, 461)
+        Me.TextBox3.Location = New System.Drawing.Point(1327, 494)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(110, 22)
         Me.TextBox3.TabIndex = 3
@@ -76,7 +77,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1327, 441)
+        Me.Label1.Location = New System.Drawing.Point(1327, 474)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(58, 17)
         Me.Label1.TabIndex = 4
@@ -85,7 +86,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(1327, 496)
+        Me.Label2.Location = New System.Drawing.Point(1327, 529)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 17)
         Me.Label2.TabIndex = 5
@@ -93,7 +94,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(1327, 644)
+        Me.Button2.Location = New System.Drawing.Point(1424, 648)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(91, 23)
         Me.Button2.TabIndex = 6
@@ -104,14 +105,14 @@ Partial Class Form1
         '
         Me.NodeList.FormattingEnabled = True
         Me.NodeList.ItemHeight = 16
-        Me.NodeList.Location = New System.Drawing.Point(1311, 126)
+        Me.NodeList.Location = New System.Drawing.Point(1311, 168)
         Me.NodeList.Name = "NodeList"
         Me.NodeList.Size = New System.Drawing.Size(241, 292)
         Me.NodeList.TabIndex = 7
         '
         'AddNodeBtn
         '
-        Me.AddNodeBtn.Location = New System.Drawing.Point(1327, 571)
+        Me.AddNodeBtn.Location = New System.Drawing.Point(1327, 604)
         Me.AddNodeBtn.Name = "AddNodeBtn"
         Me.AddNodeBtn.Size = New System.Drawing.Size(91, 23)
         Me.AddNodeBtn.TabIndex = 8
@@ -120,7 +121,7 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(1424, 571)
+        Me.Button4.Location = New System.Drawing.Point(1424, 604)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(91, 23)
         Me.Button4.TabIndex = 9
@@ -205,7 +206,7 @@ Partial Class Form1
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(1327, 37)
+        Me.CheckBox1.Location = New System.Drawing.Point(1327, 82)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(150, 21)
         Me.CheckBox1.TabIndex = 11
@@ -214,7 +215,7 @@ Partial Class Form1
         '
         'NodeName
         '
-        Me.NodeName.Location = New System.Drawing.Point(1443, 461)
+        Me.NodeName.Location = New System.Drawing.Point(1443, 494)
         Me.NodeName.Name = "NodeName"
         Me.NodeName.Size = New System.Drawing.Size(109, 22)
         Me.NodeName.TabIndex = 12
@@ -222,7 +223,7 @@ Partial Class Form1
         '
         'UserIDBox
         '
-        Me.UserIDBox.Location = New System.Drawing.Point(1311, 85)
+        Me.UserIDBox.Location = New System.Drawing.Point(1311, 130)
         Me.UserIDBox.Name = "UserIDBox"
         Me.UserIDBox.Size = New System.Drawing.Size(148, 22)
         Me.UserIDBox.TabIndex = 13
@@ -230,7 +231,7 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(1311, 65)
+        Me.Label3.Location = New System.Drawing.Point(1311, 110)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(107, 17)
         Me.Label3.TabIndex = 14
@@ -238,18 +239,28 @@ Partial Class Form1
         '
         'SaveUserID
         '
-        Me.SaveUserID.Location = New System.Drawing.Point(1466, 85)
+        Me.SaveUserID.Location = New System.Drawing.Point(1466, 130)
         Me.SaveUserID.Name = "SaveUserID"
         Me.SaveUserID.Size = New System.Drawing.Size(75, 23)
         Me.SaveUserID.TabIndex = 15
         Me.SaveUserID.Text = "Save"
         Me.SaveUserID.UseVisualStyleBackColor = True
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(1311, 46)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(154, 17)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Last Sended: Unknown"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1552, 685)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SaveUserID)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.UserIDBox)
@@ -295,4 +306,5 @@ Partial Class Form1
     Friend WithEvents UserIDBox As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents SaveUserID As Button
+    Friend WithEvents Label4 As Label
 End Class
