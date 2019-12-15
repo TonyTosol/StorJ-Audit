@@ -5,5 +5,17 @@
     <Setting Name="NodeList" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Monitoring" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UserID" Type="System.UInt64" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ServerID" Type="System.UInt64" Scope="User">
+      <Value Profile="(Default)">565147989610332171</Value>
+    </Setting>
+    <Setting Name="ChannelID" Type="System.UInt64" Scope="User">
+      <Value Profile="(Default)">655462980527587350</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

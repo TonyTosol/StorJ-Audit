@@ -65,6 +65,54 @@ Namespace My
                 Me("NodeList") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Monitoring() As Boolean
+            Get
+                Return CType(Me("Monitoring"),Boolean)
+            End Get
+            Set
+                Me("Monitoring") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property UserID() As ULong
+            Get
+                Return CType(Me("UserID"),ULong)
+            End Get
+            Set
+                Me("UserID") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("565147989610332171")>  _
+        Public Property ServerID() As ULong
+            Get
+                Return CType(Me("ServerID"),ULong)
+            End Get
+            Set
+                Me("ServerID") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("655462980527587350")>  _
+        Public Property ChannelID() As ULong
+            Get
+                Return CType(Me("ChannelID"),ULong)
+            End Get
+            Set
+                Me("ChannelID") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
