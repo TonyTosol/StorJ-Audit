@@ -259,7 +259,9 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1552, 685)
+        Me.AutoScroll = True
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(1582, 685)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SaveUserID)
         Me.Controls.Add(Me.Label3)
@@ -277,7 +279,8 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
-        Me.Text = "Node values Agregator"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Storj Audit and Monitoring"
         CType(Me.NodeView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

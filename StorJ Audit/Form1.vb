@@ -53,7 +53,7 @@ Public Class Form1
 
                     Dim list As New List(Of Object)
                     satelite = DirectCast(WebRequest.Create("http://" & node & "/api/dashboard"), HttpWebRequest)
-                    satelite.Timeout = 500
+                    satelite.Timeout = 1000
                     sateliteresponce = DirectCast(satelite.GetResponse(), HttpWebResponse)
                     reader = New StreamReader(sateliteresponce.GetResponseStream())
                     Dim rawresp As String
@@ -79,7 +79,7 @@ Public Class Form1
                         Dim obj As String = (id.GetValue("id"))
 
                         request = DirectCast(WebRequest.Create("http://" & node & "/api/satellite/" & obj), HttpWebRequest)
-                        request.Timeout = 500
+                        request.Timeout = 1000
                         response = DirectCast(request.GetResponse(), HttpWebResponse)
                         reader = New StreamReader(response.GetResponseStream())
                         rawresp = reader.ReadToEnd()
