@@ -4,7 +4,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class Form1
-    Private Sender As New HttpSender("http://95.216.196.150:5000/monitoring/")
+    Private Sender As New HttpSender("http://95.216.196.150:5000/monitoring/") ''\/("http://95.216.196.150:5000/monitoring/")/\
     Private NodesList As New List(Of String)
     Private MonitoringStatus As Boolean = False
     Private LocalID As String = ""
@@ -114,13 +114,16 @@ Public Class Form1
                     TotalingressCount = TotalingressCount + NodeingressCount
                     TotalrepairDownCount = TotalrepairDownCount + NoderepairDownCount
                     TotalrepairUpCount = TotalrepairUpCount + NoderepairUpCount
-                    Dim tmpnode As New Node With {.Name = NodeAndName,
+                    Dim tmpnode As New Node With {.Name = NodeAndNameArray(1),
                                                     .Status = "OK",
-                                                    .TotalBandwidth = Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2)}
+                                                    .TotalBandwidth = Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 1),
+                                                    .EgressBandwidth = Math.Round(NodeegressCount / 1000000000, 1),
+                                                    .IngressBandwidth = Math.Round(NodeingressCount / 1000000000, 1)}
+
                     sendObject.Nodes.AddItemToArray(tmpnode)
                     sendObject.LiveNodeCount = sendObject.LiveNodeCount + 1
                 Catch ex As Exception
-
+                    MsgBox(ex.Message)
                 End Try
 
             Next
@@ -252,8 +255,12 @@ Public Class Form1
                         NodeingressCount = NodeingressCount + ingressCount
                         NoderepairDownCount = NoderepairDownCount + repairDownCount
                         NoderepairUpCount = NoderepairUpCount + repairUpCount
-                        NodeView.Rows.Add({Node, id.GetValue("url"), Audits & "/" & TotalAudits, Uptime & "/" & TotalUptime, Math.Round(egressCount / 1000000000, 2), Math.Round(ingressCount / 1000000000, 2), Math.Round(repairUpCount / 1000000000, 3), Math.Round((repairDownCount + repairUpCount + ingressCount + egressCount) / 1000000000, 2)})
+                        Dim row As Integer = NodeView.Rows.Add({node, id.GetValue("url"), Audits, Math.Round(egressCount / 1000000000, 2), Math.Round(ingressCount / 1000000000, 2), Math.Round(repairUpCount / 1000000000, 3), Math.Round((repairDownCount + repairUpCount + ingressCount + egressCount) / 1000000000, 2)})
 
+                        If Audits > 99 Then
+
+                            NodeView.Rows(row).Cells(2).Style.BackColor = Color.GreenYellow
+                        End If
                     Next
                     TotalegressCount = TotalegressCount + NodeegressCount
                     TotalingressCount = TotalingressCount + NodeingressCount
@@ -262,14 +269,14 @@ Public Class Form1
                     NodeView.Rows.Add({"Node Total", "", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2)})
 
                 Catch ex As Exception
-                    NodeView.Rows(NodeView.Rows.Add({Node, "Node not responding", "", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
+                    NodeView.Rows(NodeView.Rows.Add({node, "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
 
                 End Try
 
             Next
-            NodeView.Rows.Add({"All Total", "", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2)})
+            NodeView.Rows.Add({"All Total", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2)})
         Catch ex As Exception
-            NodeView.Rows(NodeView.Rows.Add({"Some big error", "Node not responding", "", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
+            NodeView.Rows(NodeView.Rows.Add({"Some big error", "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
         End Try
 
     End Sub

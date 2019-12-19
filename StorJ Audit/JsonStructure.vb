@@ -22,5 +22,9 @@ Public Class Node
     Public Property Status As String
     <JsonProperty("TotalBandwidth")>
     Public Property TotalBandwidth As String
+    <JsonProperty("EgressBandwidth")>
+    Public Property EgressBandwidth As String
+    <JsonProperty("IngressBandwidth")>
+    Public Property IngressBandwidth As String
 
 End Class
