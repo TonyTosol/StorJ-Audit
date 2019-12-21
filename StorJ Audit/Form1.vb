@@ -4,7 +4,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class Form1
-    Private Sender As New HttpSender("http://95.216.196.150:5000/monitoring/") ''\/("http://95.216.196.150:5000/monitoring/")/\
+    Private Sender As New HttpSender("http://localhost:5000/monitoring/") ''\/("http://95.216.196.150:5000/monitoring/")/\
     Private NodesList As New List(Of String)
     Private MonitoringStatus As Boolean = False
     Private LocalID As String = ""
@@ -53,7 +53,7 @@ Public Class Form1
 
                     Dim list As New List(Of Object)
                     satelite = DirectCast(WebRequest.Create("http://" & node & "/api/dashboard"), HttpWebRequest)
-                    satelite.Timeout = 1000
+
                     sateliteresponce = DirectCast(satelite.GetResponse(), HttpWebResponse)
                     reader = New StreamReader(sateliteresponce.GetResponseStream())
                     Dim rawresp As String
@@ -79,7 +79,7 @@ Public Class Form1
                         Dim obj As String = (id.GetValue("id"))
 
                         request = DirectCast(WebRequest.Create("http://" & node & "/api/satellite/" & obj), HttpWebRequest)
-                        request.Timeout = 1000
+
                         response = DirectCast(request.GetResponse(), HttpWebResponse)
                         reader = New StreamReader(response.GetResponseStream())
                         rawresp = reader.ReadToEnd()
@@ -123,7 +123,7 @@ Public Class Form1
                     sendObject.Nodes.AddItemToArray(tmpnode)
                     sendObject.LiveNodeCount = sendObject.LiveNodeCount + 1
                 Catch ex As Exception
-                    MsgBox(ex.Message)
+
                 End Try
 
             Next
