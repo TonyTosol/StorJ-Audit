@@ -4,7 +4,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
 Public Class Form1
-    Private Sender As New HttpSender("http://localhost:5000/monitoring/") ''\/("http://95.216.196.150:5000/monitoring/")/\
+    Private Sender As New HttpSender("http://95.216.196.150:5000/monitoring/") ''\/("http://95.216.196.150:5000/monitoring/")/\
     Private NodesList As New List(Of String)
     Private MonitoringStatus As Boolean = False
     Private LocalID As String = ""
@@ -23,10 +23,11 @@ Public Class Form1
 
     End Sub
 
+
     Private Sub Monitoring()
         Dim sendObject As New Nodes
         sendObject.UserID = My.Settings.UserID
-        sendObject.UnicID = LocalID
+        sendObject.UnicID = My.Settings.UserID & LocalID
 
         Try
 
@@ -128,9 +129,15 @@ Public Class Form1
 
             Next
             Dim resultJson = JsonHelper.FromClass(sendObject)
+
             Dim result = Sender.postData(resultJson)
-            UpdateLastSended("Last Sended " & DateTime.Now)
+            If result Then
+                UpdateLastSended("Last Sended " & DateTime.Now)
+            Else
+                UpdateLastSended("Error sending")
+            End If
         Catch ex As Exception
+            UpdateLastSended("Error sending")
         End Try
         If MonitoringStatus Then
             For i As Integer = 0 To 599

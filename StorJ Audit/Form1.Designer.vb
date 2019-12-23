@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
@@ -32,12 +32,6 @@ Partial Class Form1
         Me.AddNodeBtn = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.NodeView = New System.Windows.Forms.DataGridView()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.NodeName = New System.Windows.Forms.TextBox()
-        Me.UserIDBox = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.SaveUserID = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Node = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Satellite = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Audits = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,6 +39,12 @@ Partial Class Form1
         Me.Ingress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RepeirEgress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalBandwidth = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.NodeName = New System.Windows.Forms.TextBox()
+        Me.UserIDBox = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.SaveUserID = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.NodeView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -135,60 +135,8 @@ Partial Class Form1
         Me.NodeView.Name = "NodeView"
         Me.NodeView.RowHeadersWidth = 51
         Me.NodeView.RowTemplate.Height = 24
-        Me.NodeView.Size = New System.Drawing.Size(1304, 678)
+        Me.NodeView.Size = New System.Drawing.Size(1304, 679)
         Me.NodeView.TabIndex = 10
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(1327, 82)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(202, 21)
-        Me.CheckBox1.TabIndex = 11
-        Me.CheckBox1.Text = "Perform Discord Monitoring"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'NodeName
-        '
-        Me.NodeName.Location = New System.Drawing.Point(1443, 494)
-        Me.NodeName.Name = "NodeName"
-        Me.NodeName.Size = New System.Drawing.Size(109, 22)
-        Me.NodeName.TabIndex = 12
-        Me.NodeName.Text = "Node 1"
-        '
-        'UserIDBox
-        '
-        Me.UserIDBox.Location = New System.Drawing.Point(1311, 130)
-        Me.UserIDBox.Name = "UserIDBox"
-        Me.UserIDBox.Size = New System.Drawing.Size(148, 22)
-        Me.UserIDBox.TabIndex = 13
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(1311, 110)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(107, 17)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Discord User ID"
-        '
-        'SaveUserID
-        '
-        Me.SaveUserID.Location = New System.Drawing.Point(1466, 130)
-        Me.SaveUserID.Name = "SaveUserID"
-        Me.SaveUserID.Size = New System.Drawing.Size(75, 23)
-        Me.SaveUserID.TabIndex = 15
-        Me.SaveUserID.Text = "Save"
-        Me.SaveUserID.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(1311, 46)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(154, 17)
-        Me.Label4.TabIndex = 16
-        Me.Label4.Text = "Last Sended: Unknown"
         '
         'Node
         '
@@ -245,6 +193,58 @@ Partial Class Form1
         Me.TotalBandwidth.Name = "TotalBandwidth"
         Me.TotalBandwidth.ReadOnly = True
         Me.TotalBandwidth.Width = 125
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(1327, 82)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(202, 21)
+        Me.CheckBox1.TabIndex = 11
+        Me.CheckBox1.Text = "Perform Discord Monitoring"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'NodeName
+        '
+        Me.NodeName.Location = New System.Drawing.Point(1443, 494)
+        Me.NodeName.Name = "NodeName"
+        Me.NodeName.Size = New System.Drawing.Size(109, 22)
+        Me.NodeName.TabIndex = 12
+        Me.NodeName.Text = "Node 1"
+        '
+        'UserIDBox
+        '
+        Me.UserIDBox.Location = New System.Drawing.Point(1311, 130)
+        Me.UserIDBox.Name = "UserIDBox"
+        Me.UserIDBox.Size = New System.Drawing.Size(148, 22)
+        Me.UserIDBox.TabIndex = 13
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(1311, 110)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(107, 17)
+        Me.Label3.TabIndex = 14
+        Me.Label3.Text = "Discord User ID"
+        '
+        'SaveUserID
+        '
+        Me.SaveUserID.Location = New System.Drawing.Point(1466, 130)
+        Me.SaveUserID.Name = "SaveUserID"
+        Me.SaveUserID.Size = New System.Drawing.Size(75, 23)
+        Me.SaveUserID.TabIndex = 15
+        Me.SaveUserID.Text = "Save"
+        Me.SaveUserID.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(1311, 46)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(154, 17)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Last Sended: Unknown"
         '
         'Form1
         '
