@@ -32,6 +32,12 @@ Partial Class Form1
         Me.AddNodeBtn = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.NodeView = New System.Windows.Forms.DataGridView()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.NodeName = New System.Windows.Forms.TextBox()
+        Me.UserIDBox = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.SaveUserID = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Node = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Satellite = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Audits = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,12 +45,7 @@ Partial Class Form1
         Me.Ingress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RepeirEgress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalBandwidth = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.NodeName = New System.Windows.Forms.TextBox()
-        Me.UserIDBox = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.SaveUserID = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.StorageUsed = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.NodeView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -130,69 +131,13 @@ Partial Class Form1
         'NodeView
         '
         Me.NodeView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.NodeView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Node, Me.Satellite, Me.Audits, Me.Egress, Me.Ingress, Me.RepeirEgress, Me.TotalBandwidth})
+        Me.NodeView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Node, Me.Satellite, Me.Audits, Me.Egress, Me.Ingress, Me.RepeirEgress, Me.TotalBandwidth, Me.StorageUsed})
         Me.NodeView.Location = New System.Drawing.Point(1, 5)
         Me.NodeView.Name = "NodeView"
         Me.NodeView.RowHeadersWidth = 51
         Me.NodeView.RowTemplate.Height = 24
         Me.NodeView.Size = New System.Drawing.Size(1304, 679)
         Me.NodeView.TabIndex = 10
-        '
-        'Node
-        '
-        Me.Node.HeaderText = "Node"
-        Me.Node.MinimumWidth = 6
-        Me.Node.Name = "Node"
-        Me.Node.ReadOnly = True
-        Me.Node.Width = 150
-        '
-        'Satellite
-        '
-        Me.Satellite.HeaderText = "Satellite"
-        Me.Satellite.MinimumWidth = 6
-        Me.Satellite.Name = "Satellite"
-        Me.Satellite.ReadOnly = True
-        Me.Satellite.Width = 175
-        '
-        'Audits
-        '
-        Me.Audits.HeaderText = "Successful Audits"
-        Me.Audits.MinimumWidth = 6
-        Me.Audits.Name = "Audits"
-        Me.Audits.ReadOnly = True
-        Me.Audits.Width = 125
-        '
-        'Egress
-        '
-        Me.Egress.HeaderText = "Egress"
-        Me.Egress.MinimumWidth = 6
-        Me.Egress.Name = "Egress"
-        Me.Egress.ReadOnly = True
-        Me.Egress.Width = 125
-        '
-        'Ingress
-        '
-        Me.Ingress.HeaderText = "Ingress"
-        Me.Ingress.MinimumWidth = 6
-        Me.Ingress.Name = "Ingress"
-        Me.Ingress.ReadOnly = True
-        Me.Ingress.Width = 125
-        '
-        'RepeirEgress
-        '
-        Me.RepeirEgress.HeaderText = "Repeir Egress"
-        Me.RepeirEgress.MinimumWidth = 6
-        Me.RepeirEgress.Name = "RepeirEgress"
-        Me.RepeirEgress.ReadOnly = True
-        Me.RepeirEgress.Width = 125
-        '
-        'TotalBandwidth
-        '
-        Me.TotalBandwidth.HeaderText = "Total Bandwidth"
-        Me.TotalBandwidth.MinimumWidth = 6
-        Me.TotalBandwidth.Name = "TotalBandwidth"
-        Me.TotalBandwidth.ReadOnly = True
-        Me.TotalBandwidth.Width = 125
         '
         'CheckBox1
         '
@@ -245,6 +190,64 @@ Partial Class Form1
         Me.Label4.Size = New System.Drawing.Size(154, 17)
         Me.Label4.TabIndex = 16
         Me.Label4.Text = "Last Sended: Unknown"
+        '
+        'Node
+        '
+        Me.Node.HeaderText = "Node"
+        Me.Node.MinimumWidth = 6
+        Me.Node.Name = "Node"
+        Me.Node.ReadOnly = True
+        Me.Node.Width = 125
+        '
+        'Satellite
+        '
+        Me.Satellite.HeaderText = "Satellite"
+        Me.Satellite.MinimumWidth = 6
+        Me.Satellite.Name = "Satellite"
+        Me.Satellite.ReadOnly = True
+        Me.Satellite.Width = 175
+        '
+        'Audits
+        '
+        Me.Audits.HeaderText = "Successful Audits"
+        Me.Audits.MinimumWidth = 6
+        Me.Audits.Name = "Audits"
+        Me.Audits.ReadOnly = True
+        '
+        'Egress
+        '
+        Me.Egress.HeaderText = "Egress"
+        Me.Egress.MinimumWidth = 6
+        Me.Egress.Name = "Egress"
+        Me.Egress.ReadOnly = True
+        '
+        'Ingress
+        '
+        Me.Ingress.HeaderText = "Ingress"
+        Me.Ingress.MinimumWidth = 6
+        Me.Ingress.Name = "Ingress"
+        Me.Ingress.ReadOnly = True
+        '
+        'RepeirEgress
+        '
+        Me.RepeirEgress.HeaderText = "Repeir Egress"
+        Me.RepeirEgress.MinimumWidth = 6
+        Me.RepeirEgress.Name = "RepeirEgress"
+        Me.RepeirEgress.ReadOnly = True
+        '
+        'TotalBandwidth
+        '
+        Me.TotalBandwidth.HeaderText = "Total Bandwidth"
+        Me.TotalBandwidth.MinimumWidth = 6
+        Me.TotalBandwidth.Name = "TotalBandwidth"
+        Me.TotalBandwidth.ReadOnly = True
+        '
+        'StorageUsed
+        '
+        Me.StorageUsed.HeaderText = "TB*Month"
+        Me.StorageUsed.MinimumWidth = 6
+        Me.StorageUsed.Name = "StorageUsed"
+        Me.StorageUsed.ReadOnly = True
         '
         'Form1
         '
@@ -300,4 +303,5 @@ Partial Class Form1
     Friend WithEvents Ingress As DataGridViewTextBoxColumn
     Friend WithEvents RepeirEgress As DataGridViewTextBoxColumn
     Friend WithEvents TotalBandwidth As DataGridViewTextBoxColumn
+    Friend WithEvents StorageUsed As DataGridViewTextBoxColumn
 End Class

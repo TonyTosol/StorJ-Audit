@@ -26,5 +26,6 @@ Public Class Node
     Public Property EgressBandwidth As String
     <JsonProperty("IngressBandwidth")>
     Public Property IngressBandwidth As String
-
+    <JsonProperty("storageDaily")>
+    Public Property storageDaily As String
 End Class
