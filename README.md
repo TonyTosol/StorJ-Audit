@@ -44,8 +44,8 @@ Add to file below
 <NodeName>- one work without space
 <Discord User ID> your user ID in Discord Chat
   
-  This needed to put write time, need to update
-*/10 * * * * /usr/bin/mono /home/pi/LinxRaport.exe <ip:port> <NodeName> <Discord User ID>
+  This needed to put write time, need to test
+59 23 28-31 * * [[ "$(date --date=tomorrow +\%d)" == "01" ]] && /usr/bin/mono /home/pi/LinxRaport.exe <ip:port> <NodeName> <Discord User ID>
 
 Command to save crontab
 
