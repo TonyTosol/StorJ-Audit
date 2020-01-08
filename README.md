@@ -16,7 +16,7 @@ Add to file below
 
 "NodeName"- one work without space
   
-"Discord User ID" your user ID in Discord Chat
+"Discord User ID" your user ID in Discord Chat, to find it you need to activate development mode, and then right click on your name.
   
 */10 * * * * /usr/bin/mono /home/pi/LinxMon.exe "ip:port" "NodeName" "Discord User ID" 2> /home/pi/LinxMon.txt
 
