@@ -18,7 +18,7 @@ Add to file below
   
 <Discord User ID> your user ID in Discord Chat
   
-*/10 * * * * /usr/bin/mono /home/pi/LinxMon.exe <ip:port> <NodeName> <Discord User ID> 2> /home/pi/LinxMon.txt
+*/10 * * * * /usr/bin/mono /home/pi/LinxMon.exe "ip:port" "NodeName" "Discord User ID" 2> /home/pi/LinxMon.txt
 
 Command to save crontab
 
