@@ -273,14 +273,14 @@ Partial Class Form1
         '
         'RepeirEgress
         '
-        Me.RepeirEgress.HeaderText = "Repeir Egress"
+        Me.RepeirEgress.HeaderText = "Repair Egress"
         Me.RepeirEgress.MinimumWidth = 6
         Me.RepeirEgress.Name = "RepeirEgress"
         Me.RepeirEgress.ReadOnly = True
         '
         'ReperIngres
         '
-        Me.ReperIngres.HeaderText = "Repeir Ingres"
+        Me.ReperIngres.HeaderText = "Repair Ingres"
         Me.ReperIngres.Name = "ReperIngres"
         Me.ReperIngres.ReadOnly = True
         '
