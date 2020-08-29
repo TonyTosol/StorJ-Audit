@@ -113,6 +113,18 @@ Namespace My
                 Me("ChannelID") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property LogMonitoring() As Boolean
+            Get
+                Return CType(Me("LogMonitoring"),Boolean)
+            End Get
+            Set
+                Me("LogMonitoring") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

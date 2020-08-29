@@ -86,20 +86,24 @@ Module Module1
                 Dim Uptime = ((JObject.Parse(rawresp)("data")("uptime")("successCount"))).ToString
                 Dim TotalUptime = ((JObject.Parse(rawresp)("data")("uptime")("totalCount"))).ToString
 
+                Try
 
 
-                For Each values As Object In JsonConvert.DeserializeObject(Of List(Of Object))(JObject.Parse(rawresp)("data")("bandwidthDaily").ToString)
-                    Dim egressObject = values("egress")("usage")
-                    Dim ingressObject = values("ingress")("usage")
-                    Dim repairDownObject = values("ingress")("repair")
-                    Dim repairUpObject = values("egress")("repair")
-                    egressCount = egressCount + CLng(egressObject)
-                    ingressCount = ingressCount + CLng(ingressObject)
-                    repairDownCount = repairDownCount + CLng(repairDownObject)
-                    repairUpCount = repairUpCount + CLng(repairUpObject)
 
-                Next
+                    For Each values As Object In JsonConvert.DeserializeObject(Of List(Of Object))(JObject.Parse(rawresp)("data")("bandwidthDaily").ToString)
+                        Dim egressObject = values("egress")("usage")
+                        Dim ingressObject = values("ingress")("usage")
+                        Dim repairDownObject = values("ingress")("repair")
+                        Dim repairUpObject = values("egress")("repair")
+                        egressCount = egressCount + CLng(egressObject)
+                        ingressCount = ingressCount + CLng(ingressObject)
+                        repairDownCount = repairDownCount + CLng(repairDownObject)
+                        repairUpCount = repairUpCount + CLng(repairUpObject)
 
+                    Next
+                Catch ex As Exception
+
+                End Try
                 NodeegressCount = NodeegressCount + egressCount
                 NodeingressCount = NodeingressCount + ingressCount
                 NoderepairDownCount = NoderepairDownCount + repairDownCount

@@ -17,5 +17,8 @@
     <Setting Name="ChannelID" Type="System.UInt64" Scope="User">
       <Value Profile="(Default)">655462980527587350</Value>
     </Setting>
+    <Setting Name="LogMonitoring" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

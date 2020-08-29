@@ -76,6 +76,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackRead.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
