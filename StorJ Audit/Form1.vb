@@ -147,8 +147,8 @@ Public Class Form1
                         reader = New StreamReader(response.GetResponseStream())
                         rawresp = reader.ReadToEnd()
 
-                        Dim Audits As String ''= ((JObject.Parse(rawresp)("audit")("successCount"))).ToString
-                        Dim TotalAudits As String ''= ((JObject.Parse(rawresp)("audit")("totalCount"))).ToString
+                        Dim Audits As Integer = 0 ''= ((JObject.Parse(rawresp)("audit")("successCount"))).ToString
+                        Dim TotalAudits As Integer = 0 ''= ((JObject.Parse(rawresp)("audit")("totalCount"))).ToString
 
                         'Dim Uptime As String '' = ((JObject.Parse(rawresp)("uptime")("successCount"))).ToString
                         'Dim TotalUptime As String '' = ((JObject.Parse(rawresp)("uptime")("totalCount"))).ToString
@@ -180,6 +180,17 @@ Public Class Form1
                                 repairDownCount = repairDownCount + CLng(repairDownObject)
                                 repairUpCount = repairUpCount + CLng(repairUpObject)
 
+                            Next
+
+                        Catch ex As Exception
+
+                        End Try
+                        Try
+                            For Each values As Object In JsonConvert.DeserializeObject(Of List(Of Object))(JObject.Parse(rawresp)("auditHistory")("windows").ToString)
+                                Dim aud = values("onlineCount")
+                                Dim totalaud = values("totalCount")
+                                Audits = Audits + CInt(aud)
+                                TotalAudits = TotalAudits + CInt(totalaud)
                             Next
                         Catch ex As Exception
 
@@ -377,11 +388,11 @@ Public Class Form1
                         End If
                     End If
                 Catch ex As Exception
-                    MsgBox(ex)
+                    '' MsgBox(ex)
                 End Try
             Next
         Catch ex As Exception
-            MsgBox(ex)
+            ''MsgBox(ex)
         End Try
         MsgBox("Node not found or not respond, check node service.")
     End Sub
