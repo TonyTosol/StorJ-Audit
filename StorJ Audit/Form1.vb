@@ -111,16 +111,6 @@ Public Class Form1
                     TotalSpace = TotalSpace + Space
                     TotalUsedSpace = TotalUsedSpace + UsedSpace
 
-                    'For Each values As Object In JsonConvert.DeserializeObject(Of List(Of Object))(JObject.Parse(rawresp)("storageDaily").ToString)
-
-
-                    '    storageDaily = storageDaily + CLng(values("atRestTotal"))
-
-
-                    'Next
-
-
-
 
                     Dim egressCount As Long = 0
                     Dim ingressCount As Long = 0
@@ -132,6 +122,7 @@ Public Class Form1
                     Dim NodeingressCount As Long = 0
                     Dim NoderepairDownCount As Long = 0
                     Dim NoderepairUpCount As Long = 0
+                    Dim NodestorageDaily As Long = 0
 
                     For Each id As JObject In list
                         egressCount = 0
@@ -196,13 +187,9 @@ Public Class Form1
 
                         End Try
                         Try
-
-
                             For Each values As Object In JsonConvert.DeserializeObject(Of List(Of Object))(JObject.Parse(rawresp)("storageDaily").ToString)
 
-
                                 storageDaily = storageDaily + CLng(values("atRestTotal"))
-
 
                             Next
                         Catch ex As Exception
@@ -212,7 +199,8 @@ Public Class Form1
                         NodeingressCount = NodeingressCount + ingressCount
                         NoderepairDownCount = NoderepairDownCount + repairDownCount
                         NoderepairUpCount = NoderepairUpCount + repairUpCount
-                        Dim row As Integer = NodeView.Rows.Add({node, id.GetValue("url"), Audits & "/" & TotalAudits, Math.Round(egressCount / 1000000000, 2), Math.Round(ingressCount / 1000000000, 2), Math.Round(repairUpCount / 1000000000, 3), Math.Round(repairDownCount / 1000000000, 3), Math.Round((repairDownCount + repairUpCount + ingressCount + egressCount) / 1000000000, 2), "", Math.Round(SatUsedspace / 1000000000)})
+                        NodestorageDaily = NodestorageDaily + storageDaily
+                        Dim row As Integer = NodeView.Rows.Add({node, id.GetValue("url"), Audits & "/" & TotalAudits, Math.Round(egressCount / 1000000000, 2), Math.Round(ingressCount / 1000000000, 2), Math.Round(repairUpCount / 1000000000, 3), Math.Round(repairDownCount / 1000000000, 3), Math.Round((repairDownCount + repairUpCount + ingressCount + egressCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(SatUsedspace / 1000000000)})
 
                         If Audits > 99 Then
 
@@ -223,8 +211,8 @@ Public Class Form1
                     TotalingressCount = TotalingressCount + NodeingressCount
                     TotalrepairDownCount = TotalrepairDownCount + NoderepairDownCount
                     TotalrepairUpCount = TotalrepairUpCount + NoderepairUpCount
-                    TotalstorageDaily = TotalstorageDaily + storageDaily
-                    NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000 * 24, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
+                    TotalstorageDaily = TotalstorageDaily + NodestorageDaily
+                    NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(NodestorageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
 
                 Catch ex As Exception
                     NodeView.Rows(NodeView.Rows.Add({node, "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
@@ -239,7 +227,7 @@ Public Class Form1
             NodeView.Rows.Add({"US1 space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedUS1 / 1000000000), ""})
             NodeView.Rows.Add({"EU1 space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedEU1 / 1000000000), ""})
             NodeView.Rows.Add({"EU North space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedEUNorth / 1000000000), ""})
-            NodeView.Rows.Add({"All Total", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round(TotalrepairDownCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2), Math.Round(TotalstorageDaily / 720000000000000 * 24, 3), Math.Round(TotalSpace / 1000000000) & "/" & Math.Round(TotalUsedSpace / 1000000000), Totalpayout / 100})
+            NodeView.Rows.Add({"All Total", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round(TotalrepairDownCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2), Math.Round(TotalstorageDaily / 720000000000000, 3), Math.Round(TotalSpace / 1000000000) & "/" & Math.Round(TotalUsedSpace / 1000000000), Totalpayout / 100})
         Catch ex As Exception
             NodeView.Rows(NodeView.Rows.Add({"Some big error", "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
         End Try
