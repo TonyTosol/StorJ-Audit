@@ -224,7 +224,7 @@ Public Class Form1
                     TotalrepairDownCount = TotalrepairDownCount + NoderepairDownCount
                     TotalrepairUpCount = TotalrepairUpCount + NoderepairUpCount
                     TotalstorageDaily = TotalstorageDaily + storageDaily
-                    NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000 * 24, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
+                    NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
 
                 Catch ex As Exception
                     NodeView.Rows(NodeView.Rows.Add({node, "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
@@ -239,7 +239,7 @@ Public Class Form1
             NodeView.Rows.Add({"US1 space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedUS1 / 1000000000), ""})
             NodeView.Rows.Add({"EU1 space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedEU1 / 1000000000), ""})
             NodeView.Rows.Add({"EU North space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedEUNorth / 1000000000), ""})
-            NodeView.Rows.Add({"All Total", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round(TotalrepairDownCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2), Math.Round(TotalstorageDaily / 720000000000000 * 24, 3), Math.Round(TotalSpace / 1000000000) & "/" & Math.Round(TotalUsedSpace / 1000000000), Totalpayout / 100})
+            NodeView.Rows.Add({"All Total", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round(TotalrepairDownCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2), Math.Round(TotalstorageDaily / 720000000000000, 3), Math.Round(TotalSpace / 1000000000) & "/" & Math.Round(TotalUsedSpace / 1000000000), Totalpayout / 100})
         Catch ex As Exception
             NodeView.Rows(NodeView.Rows.Add({"Some big error", "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
         End Try
