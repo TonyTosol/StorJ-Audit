@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Globalization
+Imports System.IO
 Imports System.Management
 Imports System.Net
 Imports System.Text
@@ -52,7 +53,9 @@ Public Class Form1
             Dim request As HttpWebRequest
             Dim response As HttpWebResponse = Nothing
             Dim reader As StreamReader
-
+            Dim online As Integer = 0
+            Dim offline As Integer = 0
+            Dim unknown As Integer = 0
 
 
             Dim TotalegressCount As Long = 0
@@ -71,6 +74,9 @@ Public Class Form1
             Dim TotalUsedUS1 As Long = 0
             Dim TotalUsedEU1 As Long = 0
             Dim TotalUsedEUNorth As Long = 0
+            Dim LastPinged As DateTime
+
+            Dim provider = CultureInfo.InvariantCulture
 
             For Each NodeAndName As String In NodeList.Items
                 Dim NodeAndNameArray = NodeAndName.Split("-")
@@ -106,7 +112,8 @@ Public Class Form1
 
                     Dim Space As Long = JObject.Parse(rawresp)("diskSpace")("available")
                     Dim UsedSpace As Long = JObject.Parse(rawresp)("diskSpace")("used")
-
+                    Dim temp = JObject.Parse(rawresp)("lastPinged")
+                    LastPinged = DateTime.Parse(temp)
 
                     TotalSpace = TotalSpace + Space
                     TotalUsedSpace = TotalUsedSpace + UsedSpace
@@ -224,11 +231,17 @@ Public Class Form1
                     TotalrepairDownCount = TotalrepairDownCount + NoderepairDownCount
                     TotalrepairUpCount = TotalrepairUpCount + NoderepairUpCount
                     TotalstorageDaily = TotalstorageDaily + storageDaily
-                    NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
-
+                    Dim timenow As DateTime = DateTime.Now.AddMinutes(-2)
+                    If LastPinged < timenow Then
+                        NodeView.Rows(NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})).DefaultCellStyle.BackColor = Color.Yellow
+                        offline = offline + 1
+                    Else
+                        online = online + 1
+                        NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
+                    End If
                 Catch ex As Exception
                     NodeView.Rows(NodeView.Rows.Add({node, "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
-
+                    unknown = unknown + 1
                 End Try
 
             Next
@@ -240,6 +253,9 @@ Public Class Form1
             NodeView.Rows.Add({"EU1 space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedEU1 / 1000000000), ""})
             NodeView.Rows.Add({"EU North space Total", "", "", "", "", "", "", "", "", Math.Round(TotalUsedEUNorth / 1000000000), ""})
             NodeView.Rows.Add({"All Total", "", "", Math.Round(TotalegressCount / 1000000000, 2), Math.Round(TotalingressCount / 1000000000, 2), Math.Round(TotalrepairUpCount / 1000000000, 2), Math.Round(TotalrepairDownCount / 1000000000, 2), Math.Round((TotalegressCount + TotalingressCount + TotalrepairDownCount + TotalrepairUpCount) / 1000000000, 2), Math.Round(TotalstorageDaily / 720000000000000, 3), Math.Round(TotalSpace / 1000000000) & "/" & Math.Round(TotalUsedSpace / 1000000000), Totalpayout / 100})
+            Label4.Text = "Online " & online
+            Label5.Text = "Offline " & offline
+            Label6.Text = "Unknown " & unknown
         Catch ex As Exception
             NodeView.Rows(NodeView.Rows.Add({"Some big error", "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
         End Try

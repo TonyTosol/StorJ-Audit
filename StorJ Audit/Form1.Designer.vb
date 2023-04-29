@@ -32,11 +32,6 @@ Partial Class Form1
         Me.AddNodeBtn = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.NodeView = New System.Windows.Forms.DataGridView()
-        Me.NodeName = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.Node = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.Satellite = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Audits = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,6 +43,14 @@ Partial Class Form1
         Me.StorageUsed = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SpaceUsed = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Payout = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NodeName = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.NodeView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -152,53 +155,6 @@ Partial Class Form1
         Me.NodeView.Size = New System.Drawing.Size(1563, 679)
         Me.NodeView.TabIndex = 10
         '
-        'NodeName
-        '
-        Me.NodeName.Location = New System.Drawing.Point(1700, 448)
-        Me.NodeName.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.NodeName.Name = "NodeName"
-        Me.NodeName.Size = New System.Drawing.Size(109, 22)
-        Me.NodeName.TabIndex = 12
-        Me.NodeName.Text = "Node 1"
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(1588, 649)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(188, 23)
-        Me.Button3.TabIndex = 18
-        Me.Button3.Text = "Previus Month"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(1572, 41)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(237, 59)
-        Me.TextBox1.TabIndex = 19
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(1581, 23)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 16)
-        Me.Label3.TabIndex = 20
-        Me.Label3.Text = "Node ID"
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(1572, 104)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(91, 23)
-        Me.Button5.TabIndex = 21
-        Me.Button5.Text = "Search"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
         'Node
         '
         Me.Node.HeaderText = "Node"
@@ -290,6 +246,83 @@ Partial Class Form1
         Me.Payout.ReadOnly = True
         Me.Payout.Width = 50
         '
+        'NodeName
+        '
+        Me.NodeName.Location = New System.Drawing.Point(1700, 448)
+        Me.NodeName.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.NodeName.Name = "NodeName"
+        Me.NodeName.Size = New System.Drawing.Size(109, 22)
+        Me.NodeName.TabIndex = 12
+        Me.NodeName.Text = "Node 1"
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(1588, 649)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(188, 23)
+        Me.Button3.TabIndex = 18
+        Me.Button3.Text = "Previus Month"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(1572, 23)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(237, 59)
+        Me.TextBox1.TabIndex = 19
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(1581, 5)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(57, 16)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "Node ID"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(1572, 86)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(91, 23)
+        Me.Button5.TabIndex = 21
+        Me.Button5.Text = "Search"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Lime
+        Me.Label4.Location = New System.Drawing.Point(1581, 126)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(45, 16)
+        Me.Label4.TabIndex = 22
+        Me.Label4.Text = "Online"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Yellow
+        Me.Label5.Location = New System.Drawing.Point(1650, 126)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(44, 16)
+        Me.Label5.TabIndex = 23
+        Me.Label5.Text = "Offline"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Red
+        Me.Label6.Location = New System.Drawing.Point(1725, 126)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(62, 16)
+        Me.Label6.TabIndex = 24
+        Me.Label6.Text = "Unknown"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -297,6 +330,9 @@ Partial Class Form1
         Me.AutoScroll = True
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1816, 686)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TextBox1)
@@ -347,4 +383,7 @@ Partial Class Form1
     Friend WithEvents StorageUsed As DataGridViewTextBoxColumn
     Friend WithEvents SpaceUsed As DataGridViewTextBoxColumn
     Friend WithEvents Payout As DataGridViewTextBoxColumn
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
 End Class
