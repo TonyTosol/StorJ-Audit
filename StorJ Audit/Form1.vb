@@ -41,7 +41,7 @@ Public Class Form1
 
     Private Sub GetData(month As String)
         Dim sendObject As New Nodes
-
+        Label7.Text = DateTime.Now
         Try
             NodeView.Rows.Clear()
 
@@ -233,11 +233,11 @@ Public Class Form1
                     TotalstorageDaily = TotalstorageDaily + storageDaily
                     Dim timenow As DateTime = DateTime.Now.AddMinutes(-2)
                     If LastPinged < timenow Then
-                        NodeView.Rows(NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})).DefaultCellStyle.BackColor = Color.Yellow
+                        NodeView.Rows(NodeView.Rows.Add({"Node Total", LastPinged, "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})).DefaultCellStyle.BackColor = Color.Yellow
                         offline = offline + 1
                     Else
                         online = online + 1
-                        NodeView.Rows.Add({"Node Total", "", "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
+                        NodeView.Rows.Add({"Node Total", LastPinged, "", Math.Round(NodeegressCount / 1000000000, 2), Math.Round(NodeingressCount / 1000000000, 2), Math.Round(NoderepairUpCount / 1000000000, 2), Math.Round(NoderepairDownCount / 1000000000, 2), Math.Round((NodeegressCount + NodeingressCount + NoderepairUpCount + NoderepairDownCount) / 1000000000, 2), Math.Round(storageDaily / 720000000000000, 3), Math.Round(Space / 1000000000) & "/" & Math.Round(UsedSpace / 1000000000), NodePayout / 100})
                     End If
                 Catch ex As Exception
                     NodeView.Rows(NodeView.Rows.Add({node, "Node not responding", "", "", "", ""})).DefaultCellStyle.BackColor = Color.Red
